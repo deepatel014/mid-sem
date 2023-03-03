@@ -1,0 +1,70 @@
+<% include ../partials/header.ejs %>
+
+
+<!-- Content for The Add page-->
+<div class="container">
+    <div class="row">
+        <div class="offest-md-2 col-md-8">
+            <h1><%= title%></h1>
+
+            <form class="form" method="POST">
+                <div class="form-group">
+                    <label for="nameTextField">Book Title</label>
+                    <input type="text" class="form-control"
+                    id="nameTextField"
+                    placeholder="Enter the Book Title"
+                    name="Title" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="authorTextField">Author</label>
+                    <input type="text" class="form-control"
+                    id="authorTextField"
+                    placeholder="Enter the Book's author"
+                    name="Author" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="publishedTextField">Year</label>
+                    <input type="text" class="form-control"
+                    id="publishedTextField"
+                    placeholder="Enter the Book's Year of publication"
+                    name="Published" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="descriptionTextArea">Description</label>
+                    <textarea type="text" class="form-control"
+                    id="descriptionTextArea"
+                    placeholder="Enter the a brief description of the book"
+                    name="Description" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="publishedTextField">Genre</label>
+                    <input type="text" class="form-control"
+                    id="genreTextField"
+                    placeholder="Enter the genre of the book"
+                    name="Genre" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="publishedTextField">Price</label>
+                    <input type="number" class="form-control"
+                    id="priceTextField"
+                    placeholder="Enter the Book's price"
+                    name="Price" required>
+                </div>
+
+                <button class="btn btn-primary" type="submit">
+                    <i class="fa fa-edit"></i> Submit</button>
+
+                    <a href="/books" class="btn btn-warning">
+                        <i class="fa fa-undo"></i> Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<% include ../partials/footer.ejs %>
