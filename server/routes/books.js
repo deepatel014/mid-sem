@@ -1,3 +1,12 @@
+/* 
+// File name : OMP229-F2022-MidTerm-301317988/ routes/books.js
+// Authors Name: Deep Devendra Patel
+// Student ID: 301317988
+// Web App Name: Book List App
+*/
+
+
+
 // modules required for routing
 let express = require('express');
 let router = express.Router();
@@ -30,6 +39,7 @@ router.get('/add', (req, res, next) => {
     /*****************
      * ADD CODE HERE *
      *****************/
+    // rendering the add page 
     res.render('books/add', {title:'Add Book'});
 
 
@@ -41,6 +51,7 @@ router.post('/add', (req, res, next) => {
     /*****************
      * ADD CODE HERE *
      *****************/
+    // taking the values given in the input field from the add page and feeding it to the book object
     let book = books({
       "Title": req.body.Title,
       "Author": req.body.Author,
@@ -49,6 +60,8 @@ router.post('/add', (req, res, next) => {
       "Price":req.body.Price,
       "Genre": req.body.Genre
     });
+
+    // adding the book object with the values to the database using the 'create' method  
     books.create(book,(err,book)=>{
       if(err)
         {
@@ -70,6 +83,7 @@ router.get('/:id', (req, res, next) => {
     /*****************
      * ADD CODE HERE *
      *****************/
+    // getting the id of the specific book item and passing it to the details.ejs page which has the edit form
     let id = req.params.id;
 
     books.findById(id, (err, bookToEdit) => {
@@ -87,6 +101,7 @@ router.get('/:id', (req, res, next) => {
 });
 
 // POST - process the information passed from the details form and update the document
+// using assynch and await for this functionality for error handling and ease of data processing 
 router.post('/:id', async (req, res, next) => {
 
     /*****************
@@ -95,6 +110,7 @@ router.post('/:id', async (req, res, next) => {
     try{
       let id = req.params.id
 
+      // updating the database using the findOneAndUpdate method 
     let updatedBook = await books.findOneAndUpdate({_id: id},{
         // "_id": id,
         Title: req.body.Title,
@@ -111,30 +127,7 @@ router.post('/:id', async (req, res, next) => {
     }catch(error){
       console.log(error);
     }
-    // let id = req.params.id
-
-    // let updatedBook = books({
-    //     // "_id": id,
-    //     "Title": req.body.Title,
-    //     "Author": req.body.Author,
-    //     "Published":req.body.Published,
-    //     "Description": req.body.Description,
-    //     "Price":req.body.Price,
-    //     "Genre": req.body.Genre
-    // });
-
-    // books.updateOne({_id: id}, updatedBook, (err) => {
-    //     if(err)
-    //     {
-    //         console.log(err);
-    //         res.end(err);
-    //     }
-    //     else
-    //     {
-    //         // refresh the book list
-    //         res.redirect('/books');
-    //     }
-    // });
+   
 
 });
 
@@ -144,9 +137,12 @@ router.get('/delete/:id',async (req, res, next) => {
     /*****************
      * ADD CODE HERE *
      *****************/
+    // using the asynch await to delete the book item 
     let id = req.params.id;
 
     try{
+
+      // using the findOneAndDelete method over here to delete the item
       const deleted = await books.findOneAndDelete({_id: id});
       res.redirect('/books');
     }catch(error){

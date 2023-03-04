@@ -1,3 +1,9 @@
+/* 
+// File name : OMP229-F2022-MidTerm-301317988/ books.js
+// Authors Name: Deep Devendra Patel
+// Student ID: 301317988
+// Web App Name: Book List App
+*/
 let mongoose = require('mongoose');
 
 // create a model class
