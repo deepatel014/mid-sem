@@ -2,7 +2,7 @@
 // File name : OMP229-F2022-MidTerm-301317988/ App.js
 // Authors Name: Deep Devendra Patel
 // Student ID: 301317988
-// Web App Name: Book List App
+// Web App Name: My Favourite Books
 */
 // moddules for node and express
 let createError = require('http-errors');
